@@ -447,7 +447,7 @@
                 const theta = Math.random() * Math.PI * 2; const phi = Math.acos(2 * Math.random() - 1);
                 this.posScatter.set(rS*Math.sin(phi)*Math.cos(theta), rS*Math.sin(phi)*Math.sin(theta), rS*Math.cos(phi));
                 let u, v, radius;
-                if (this.type === 'PHOTO') { u = this.mesh.userData.u !== undefined ? this.mesh.userData.u : 0; v = Math.PI / 2; radius = 1.15; } 
+                if (this.type === 'PHOTO') { u = this.mesh.userData.u !== undefined ? this.mesh.userData.u : 0; v = Math.PI / 2; radius = 1.45; } 
                 else { u = (Math.random() - 0.5) * 2.2; v = Math.random() * Math.PI * 2; radius = 0.65 + Math.random() * 0.35; }
                 const x = u * (INGOT_CONFIG.size.scaleX / 2);
                 const bellyFactor = Math.sqrt(Math.max(0, 1 - (u*u)/1.5)); 
@@ -473,7 +473,7 @@
                     if (this.type === 'PHOTO') { this.mesh.lookAt(this.mesh.position.x, this.mesh.position.y + 100, this.mesh.position.z + 100); this.mesh.rotation.x = 0; this.mesh.rotation.z = this.mesh.position.x * -0.01; } 
                     else { this.mesh.rotation.x += 0.5 * dt; this.mesh.rotation.y += 0.5 * dt; }
                 }
-                if (mode === 'FOCUS' && this.mesh === targetMesh) { this.mesh.lookAt(camera.position); this.mesh.scale.lerp(new THREE.Vector3(12,12,12), 4*dt); } 
+                if (mode === 'FOCUS' && this.mesh === targetMesh) { this.mesh.lookAt(camera.position); this.mesh.scale.lerp(new THREE.Vector3(8,8,8), 4*dt); } 
                 else { let s = this.baseScale; if(this.isDust) s *= (0.8 + 0.6 * Math.sin(clock.elapsedTime * 5 + this.mesh.id)); if(this.type === 'PHOTO' && mode === 'FOCUS') s *= 0.5; this.mesh.scale.lerp(new THREE.Vector3(s,s,s), 4*dt); }
             }
         }
