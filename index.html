@@ -226,19 +226,19 @@
             for (let n of seq) { 
                 changeText(n); 
                 // Đã sửa: Tăng thời gian chờ lên 2500 (2.5 giây) để nhảy số chậm hơn
-                await smartWait(2500); 
+                await smartWait(2200); 
             }
             await smartWait(200); 
             changeText("HAPPY\nNEW YEAR"); 
             // Đã sửa: Tăng thời gian hiện chữ Happy New Year lên 3 giây
-            await smartWait(3000); 
+            await smartWait(2500); 
             
             isFireworkActive = true; 
             setTimeout(() => fwFireworks.push(new Firework(fwWidth*0.2, fwHeight, fwWidth*0.2, fwHeight*0.3)), 0);
             setTimeout(() => fwFireworks.push(new Firework(fwWidth*0.8, fwHeight, fwWidth*0.8, fwHeight*0.3)), 1000);
             
             await smartWait(2000); 
-            changeText("Na Yeu"); 
+            changeText("Frohes neues Jahr"); 
             canSwitchToIngot = true;
             console.log("Sẵn sàng chuyển Thỏi Vàng");
         }
