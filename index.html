@@ -226,18 +226,18 @@
             for (let n of seq) { 
                 changeText(n); 
                 // Đã sửa: Tăng thời gian chờ lên 2500 (2.5 giây) để nhảy số chậm hơn
-                await smartWait(2200); 
+                await smartWait(500); 
             }
             await smartWait(200); 
             changeText("HAPPY\nNEW YEAR"); 
             // Đã sửa: Tăng thời gian hiện chữ Happy New Year lên 3 giây
-            await smartWait(2500); 
+            await smartWait(500); 
             
             isFireworkActive = true; 
             setTimeout(() => fwFireworks.push(new Firework(fwWidth*0.2, fwHeight, fwWidth*0.2, fwHeight*0.3)), 0);
             setTimeout(() => fwFireworks.push(new Firework(fwWidth*0.8, fwHeight, fwWidth*0.8, fwHeight*0.3)), 1000);
             
-            await smartWait(2000); 
+            await smartWait(500); 
             changeText("Frohes neues Jahr"); 
             canSwitchToIngot = true;
             console.log("Sẵn sàng chuyển Thỏi Vàng");
@@ -415,11 +415,11 @@
 
         function addPhotoToScene(texture) {
             const group = new THREE.Group(); 
-            const photoGeo = new THREE.PlaneGeometry(5, 5); 
+            const photoGeo = new THREE.PlaneGeometry(7.5, 7.5); 
             const photoMat = INGOT_MATS.photo.clone(); photoMat.map = texture;
             const photo = new THREE.Mesh(photoGeo, photoMat); photo.position.z = 0.18;
-            const frameGeo = new THREE.BoxGeometry(5.6, 5.6, 0.3); const frame = new THREE.Mesh(frameGeo, INGOT_MATS.gold);
-            const backGeo = new THREE.BoxGeometry(5.2, 5.2, 0.32); const back = new THREE.Mesh(backGeo, INGOT_MATS.velvetRed);
+            const frameGeo = new THREE.BoxGeometry(8.4, 8.4, 0.3); const frame = new THREE.Mesh(frameGeo, INGOT_MATS.gold);
+            const backGeo = new THREE.BoxGeometry(7.8, 7.8, 0.32); const back = new THREE.Mesh(backGeo, INGOT_MATS.velvetRed);
             group.add(frame, back, photo); photoMeshGroup.add(group);
             group.userData = { isPhoto: true, u: 0 };
             particleSystem.push(new Particle(group, 'PHOTO', false)); 
