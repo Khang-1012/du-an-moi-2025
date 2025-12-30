@@ -462,7 +462,7 @@
             update(dt, mode, targetMesh) {
                 let target = (mode === 'SCATTER') ? this.posScatter : this.posIngot;
                 if (mode === 'FOCUS' && this.mesh === targetMesh) { 
-                    const targetWorldPos = new THREE.Vector3(0, INGOT_CONFIG.camera.y, 45);
+                    const targetWorldPos = new THREE.Vector3(0, INGOT_CONFIG.camera.y, 30);
                     const desiredLocalPos = targetWorldPos.applyMatrix4(mainGroup.matrixWorld.clone().invert());
                     target = desiredLocalPos;
                 }
