@@ -42,7 +42,9 @@
     </script>
 </head>
 <body>
-
+    <audio id="bg-music" loop>
+        <source src="nhac-tet.mp3" type="audio/mpeg">
+    </audio>
     <div id="loading">ĐANG TẢI... VUI LÒNG CHO PHÉP CAMERA</div>
     <div id="cam-preview"><video class="input_video"></video></div>
 
@@ -415,11 +417,11 @@
 
         function addPhotoToScene(texture) {
             const group = new THREE.Group(); 
-            const photoGeo = new THREE.PlaneGeometry(7.5, 7.5); 
+            const photoGeo = new THREE.PlaneGeometry(3.3, 3.3); 
             const photoMat = INGOT_MATS.photo.clone(); photoMat.map = texture;
             const photo = new THREE.Mesh(photoGeo, photoMat); photo.position.z = 0.18;
-            const frameGeo = new THREE.BoxGeometry(8.4, 8.4, 0.3); const frame = new THREE.Mesh(frameGeo, INGOT_MATS.gold);
-            const backGeo = new THREE.BoxGeometry(7.8, 7.8, 0.32); const back = new THREE.Mesh(backGeo, INGOT_MATS.velvetRed);
+            const frameGeo = new THREE.BoxGeometry(4.2, 4.2, 0.3); const frame = new THREE.Mesh(frameGeo, INGOT_MATS.gold);
+            const backGeo = new THREE.BoxGeometry(2.9, 2.9, 0.32); const back = new THREE.Mesh(backGeo, INGOT_MATS.velvetRed);
             group.add(frame, back, photo); photoMeshGroup.add(group);
             group.userData = { isPhoto: true, u: 0 };
             particleSystem.push(new Particle(group, 'PHOTO', false)); 
@@ -447,7 +449,7 @@
                 const theta = Math.random() * Math.PI * 2; const phi = Math.acos(2 * Math.random() - 1);
                 this.posScatter.set(rS*Math.sin(phi)*Math.cos(theta), rS*Math.sin(phi)*Math.sin(theta), rS*Math.cos(phi));
                 let u, v, radius;
-                if (this.type === 'PHOTO') { u = this.mesh.userData.u !== undefined ? this.mesh.userData.u : 0; v = Math.PI / 2; radius = 1.45; } 
+                if (this.type === 'PHOTO') { u = this.mesh.userData.u !== undefined ? this.mesh.userData.u : 0; v = Math.PI / 2; radius = 1.2; } 
                 else { u = (Math.random() - 0.5) * 2.2; v = Math.random() * Math.PI * 2; radius = 0.65 + Math.random() * 0.35; }
                 const x = u * (INGOT_CONFIG.size.scaleX / 2);
                 const bellyFactor = Math.sqrt(Math.max(0, 1 - (u*u)/1.5)); 
