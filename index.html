@@ -473,7 +473,7 @@
                     if (this.type === 'PHOTO') { this.mesh.lookAt(this.mesh.position.x, this.mesh.position.y + 100, this.mesh.position.z + 100); this.mesh.rotation.x = 0; this.mesh.rotation.z = this.mesh.position.x * -0.01; } 
                     else { this.mesh.rotation.x += 0.5 * dt; this.mesh.rotation.y += 0.5 * dt; }
                 }
-                if (mode === 'FOCUS' && this.mesh === targetMesh) { this.mesh.lookAt(camera.position); this.mesh.scale.lerp(new THREE.Vector3(8,8,8), 4*dt); } 
+                if (mode === 'FOCUS' && this.mesh === targetMesh) { this.mesh.lookAt(camera.position); this.mesh.scale.lerp(new THREE.Vector3(5,5,5), 4*dt); } 
                 else { let s = this.baseScale; if(this.isDust) s *= (0.8 + 0.6 * Math.sin(clock.elapsedTime * 5 + this.mesh.id)); if(this.type === 'PHOTO' && mode === 'FOCUS') s *= 0.5; this.mesh.scale.lerp(new THREE.Vector3(s,s,s), 4*dt); }
             }
         }
