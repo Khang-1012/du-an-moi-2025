@@ -65,7 +65,7 @@
         // ==========================================
         const IMAGE_CONFIG = {
             folder: './images/', 
-            files: ['1.png', '2.png', '3.png', '4.png', '5.png'] 
+            files: ['13.png', '14.png', '15.png', '16.png'] 
         };
 
         // --- GLOBAL VARIABLES ---
@@ -225,8 +225,8 @@
             const seq = ['5', '4', '3', '2', '1']; 
             for (let n of seq) { 
                 changeText(n); 
-                // Đã sửa: Tăng thời gian chờ lên 2500 (2.5 giây) để nhảy số chậm hơn
-                await smartWait(2500); 
+                // Đã sửa: Tăng thời gian chờ lên 2500 (1,7 giây) để nhảy số chậm hơn
+                await smartWait(1700); 
             }
             await smartWait(200); 
             changeText("HAPPY\nNEW YEAR"); 
@@ -238,7 +238,7 @@
             setTimeout(() => fwFireworks.push(new Firework(fwWidth*0.8, fwHeight, fwWidth*0.8, fwHeight*0.3)), 1000);
             
             await smartWait(2000); 
-            changeText("Na Yeu"); 
+            changeText("Chúc mọi người một năm mới an lành"); 
             canSwitchToIngot = true;
             console.log("Sẵn sàng chuyển Thỏi Vàng");
         }
