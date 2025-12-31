@@ -265,11 +265,11 @@
         async function smartWait(ms) { let r = ms; while (r > 0) { await new Promise(res => setTimeout(res, 50)); if (!isPaused) r -= 50; } }
         
         async function runCountdownScript() {
-            const seq = ['5', '4', '3', '2', '1', '0']; 
+            const seq = ['3', '2', '1', '0']; 
             for (let n of seq) { 
                 changeText(n); 
                 // Đã sửa: Tăng thời gian chờ lên 2500 (2.5 giây) để nhảy số chậm hơn
-                await smartWait(2300); 
+                await smartWait(2400); 
             }
             //await smartWait(2100); 
             //changeText("HAPPY\nNEW YEAR"); 
@@ -280,7 +280,7 @@
             setTimeout(() => fwFireworks.push(new Firework(fwWidth*0.2, fwHeight, fwWidth*0.2, fwHeight*0.3)), 0);
             setTimeout(() => fwFireworks.push(new Firework(fwWidth*0.8, fwHeight, fwWidth*0.8, fwHeight*0.3)), 1000);
             
-            await smartWait(2500); 
+            await smartWait(2200); 
             changeText("Frohes neues Jahr"); 
             canSwitchToIngot = true;
             console.log("Sẵn sàng chuyển Thỏi Vàng");
