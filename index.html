@@ -416,15 +416,26 @@
         }
 
         function addPhotoToScene(texture) {
-            const group = new THREE.Group(); 
-            const photoGeo = new THREE.PlaneGeometry(8, 6.5); 
-            const photoMat = INGOT_MATS.photo.clone(); photoMat.map = texture;
-            const photo = new THREE.Mesh(photoGeo, photoMat); photo.position.z = 0.16;
-            const frameGeo = new THREE.BoxGeometry(8, 6.5, 0.4); const frame = new THREE.Mesh(frameGeo, INGOT_MATS.gold);
-            const backGeo = new THREE.BoxGeometry(7.8, 6.5, 0.32); const back = new THREE.Mesh(backGeo, INGOT_MATS.velvetRed);
-            group.add(frame, back, photo); photoMeshGroup.add(group);
+            const group = new THREE.Group();
+            
+            // Chiều rộng 6.0, Chiều cao 4.2
+            const photoGeo = new THREE.PlaneGeometry(6.0, 4.2); 
+            const photoMat = INGOT_MATS.photo.clone(); 
+            photoMat.map = texture;
+            const photo = new THREE.Mesh(photoGeo, photoMat); 
+            photo.position.z = 0.16; // Nằm sát mặt viền vàng
+
+            const frameGeo = new THREE.BoxGeometry(6.0, 4.2, 0.3); 
+            const frame = new THREE.Mesh(frameGeo, INGOT_MATS.gold);
+            
+            const backGeo = new THREE.BoxGeometry(5.8, 4.0, 0.32); 
+            const back = new THREE.Mesh(backGeo, INGOT_MATS.velvetRed);
+            
+            group.add(frame, back, photo); 
+            photoMeshGroup.add(group);
+            
             group.userData = { isPhoto: true, u: 0 };
-            particleSystem.push(new Particle(group, 'PHOTO', false)); 
+            particleSystem.push(new Particle(group, 'PHOTO', false));
             updatePhotoPositions();
         }
 
