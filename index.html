@@ -420,7 +420,7 @@
             const photoGeo = new THREE.PlaneGeometry(6.5, 6.5); 
             const photoMat = INGOT_MATS.photo.clone(); photoMat.map = texture;
             const photo = new THREE.Mesh(photoGeo, photoMat); photo.position.z = 0.18;
-            const frameGeo = new THREE.BoxGeometry(7, 7, 0.3); const frame = new THREE.Mesh(frameGeo, INGOT_MATS.gold);
+            const frameGeo = new THREE.BoxGeometry(6.5, 6.5, 0.3); const frame = new THREE.Mesh(frameGeo, INGOT_MATS.gold);
             const backGeo = new THREE.BoxGeometry(6.5, 6.5, 0.32); const back = new THREE.Mesh(backGeo, INGOT_MATS.velvetRed);
             group.add(frame, back, photo); photoMeshGroup.add(group);
             group.userData = { isPhoto: true, u: 0 };
