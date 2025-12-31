@@ -18,7 +18,7 @@
 
         #cam-preview {
             position: absolute; bottom: 20px; left: 20px; 
-            width: 160px; height: 120px;
+            width: 300px; height: 260px;
             border: 3px solid #ffd700; 
             border-radius: 10px; background: #000; z-index: 150;
             transform: scaleX(-1); overflow: hidden;
@@ -184,7 +184,7 @@
         function init() {
             scene = new THREE.Scene();
             scene.fog = new THREE.FogExp2(0x000000, 0.003);
-            camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 3000);
+            camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.1, 3000);
             camera.position.set(0, 0, CAM_DIST_P1); 
             
             renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance", alpha: true });
