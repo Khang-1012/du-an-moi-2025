@@ -65,7 +65,7 @@
         // ==========================================
         const IMAGE_CONFIG = {
             folder: './', 
-            files: ['11.png', '12.png', '13.png', '14.png', '15.png', '16.png'] 
+            files: ['11.jpg', '12.jpg', '13.jpg', '14.jpg', '15.jpg', '16.jpg'] 
         };
 
         // --- GLOBAL VARIABLES ---
@@ -415,11 +415,11 @@
 
         function addPhotoToScene(texture) {
             const group = new THREE.Group(); 
-            const photoGeo = new THREE.PlaneGeometry(4, 2.5); 
+            const photoGeo = new THREE.PlaneGeometry(5, 2.5); 
             const photoMat = INGOT_MATS.photo.clone(); photoMat.map = texture;
             const photo = new THREE.Mesh(photoGeo, photoMat); photo.position.z = 0.18;
-            const frameGeo = new THREE.BoxGeometry(4, 2.8, 0.3); const frame = new THREE.Mesh(frameGeo, INGOT_MATS.gold);
-            const backGeo = new THREE.BoxGeometry(3.8, 2.6, 0.32); const back = new THREE.Mesh(backGeo, INGOT_MATS.velvetRed);
+            const frameGeo = new THREE.BoxGeometry(5, 2.8, 0.3); const frame = new THREE.Mesh(frameGeo, INGOT_MATS.gold);
+            const backGeo = new THREE.BoxGeometry(4.8, 2.6, 0.32); const back = new THREE.Mesh(backGeo, INGOT_MATS.velvetRed);
             group.add(frame, back, photo); photoMeshGroup.add(group);
             group.userData = { isPhoto: true, u: 0 };
             particleSystem.push(new Particle(group, 'PHOTO', false)); 
