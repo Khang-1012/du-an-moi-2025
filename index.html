@@ -50,7 +50,7 @@
 </head>
 <body>
 
-    <div id="loading">IM LADEVORGANG... BITTE DIE CAMERA ÖFFNEN LASSEN</div>
+    <div id="loading">IM LADEVORGANG... BITTE DIE CAMERA ERÖFFNEN</div>
     <div id="cam-preview"><video class="input_video"></video></div>
 
     <canvas id="firework-canvas"></canvas>
@@ -191,7 +191,7 @@
         function init() {
             scene = new THREE.Scene();
             scene.fog = new THREE.FogExp2(0x000000, 0.003);
-            camera = new THREE.PerspectiveCamera(48, window.innerWidth / window.innerHeight, 0.1, 3000);
+            camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 3000);
             camera.position.set(0, 0, CAM_DIST_P1); 
             
             renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance", alpha: true });
@@ -233,7 +233,7 @@
             for (let n of seq) { 
                 changeText(n); 
                 // Đã sửa: Tăng thời gian chờ lên 2500 (2.5 giây) để nhảy số chậm hơn
-                await smartWait(500); 
+                await smartWait(1500); 
             }
             //await smartWait(200); 
             //changeText("HAPPY\nNEW YEAR"); 
@@ -244,7 +244,7 @@
             setTimeout(() => fwFireworks.push(new Firework(fwWidth*0.2, fwHeight, fwWidth*0.2, fwHeight*0.3)), 0);
             setTimeout(() => fwFireworks.push(new Firework(fwWidth*0.8, fwHeight, fwWidth*0.8, fwHeight*0.3)), 1000);
             
-            await smartWait(500); 
+            await smartWait(2000); 
             changeText("Frohes neues Jahr"); 
             canSwitchToIngot = true;
             console.log("Sẵn sàng chuyển Thỏi Vàng");
