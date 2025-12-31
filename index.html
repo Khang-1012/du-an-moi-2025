@@ -50,7 +50,7 @@
 </head>
 <body>
 
-    <div id="loading">IM LADEVORGANG... BITTE DIE CAMERA ERÖFFNEN</div>
+    <div id="loading">IM LADEVORGANG... BITTE DIE CAMERA/nERÖFFNEN</div>
     <div id="cam-preview"><video class="input_video"></video></div>
 
     <canvas id="firework-canvas"></canvas>
@@ -295,7 +295,7 @@
 
             headerTextMesh = new THREE.Mesh(headerGeo, headerTextMat);
             // ĐƯA LÊN CAO SÁT MÉP TRÊN MÀN HÌNH (Y=45)
-            headerTextMesh.position.set(0, 45, 0);
+            headerTextMesh.position.set(0, 25, 0);
             scene.add(headerTextMesh);
         }
 
