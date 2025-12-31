@@ -417,7 +417,7 @@
 
         function addPhotoToScene(texture) {
             const group = new THREE.Group(); 
-            const photoGeo = new THREE.PlaneGeometry(4.5, 4.5); 
+            const photoGeo = new THREE.PlaneGeometry(6.5, 6.5); 
             const photoMat = INGOT_MATS.photo.clone(); photoMat.map = texture;
             const photo = new THREE.Mesh(photoGeo, photoMat); photo.position.z = 0.18;
             const frameGeo = new THREE.BoxGeometry(7, 7, 0.3); const frame = new THREE.Mesh(frameGeo, INGOT_MATS.gold);
