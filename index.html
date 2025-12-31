@@ -5,7 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tet Magic - Final Gold 2026</title>
     <style>
-        body { margin: 0; overflow: hidden; background-color: #000000; font-family: 'Segoe UI', sans-serif; }
+    body
+        <audio id="bgMusic" loop>
+            <source src="nhac-tet.mp3" type="audio/mpeg">
+        </audio>
+
+         <div id="container"></div>
+  
+        { margin: 0; overflow: hidden; background-color: #000000; font-family: 'Segoe UI', sans-serif; }
         canvas#three-canvas { display: block; position: absolute; top: 0; left: 0; z-index: 1; }
         canvas#firework-canvas { display: block; position: absolute; top: 0; left: 0; z-index: 2; pointer-events: none; }
         
@@ -483,6 +490,22 @@
             renderer.setSize(window.innerWidth, window.innerHeight); composer.setSize(window.innerWidth, window.innerHeight);
             if(currentPhase===1) resizeFw();
         }
+        // --- PHẦN ĐIỀU KHIỂN NHẠC ---
+        const music = document.getElementById('bgMusic');
+        music.volume = 0.5; // Chỉnh âm lượng 50%
+
+        // Hàm để kích hoạt nhạc
+        function startMusic() {
+            music.play().then(() => {
+                console.log("Nhạc đang phát...");
+            }).catch(err => {
+                console.log("Chờ người dùng nhấn vào màn hình để phát nhạc");
+            });
+        }
+
+        // Tự động phát nhạc khi người dùng click hoặc chạm vào màn hình lần đầu
+        window.addEventListener('click', startMusic, { once: true });
+        window.addEventListener('touchstart', startMusic, { once: true });
     </script>
 </body>
 </html>
