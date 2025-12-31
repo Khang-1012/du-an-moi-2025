@@ -269,7 +269,7 @@
             for (let n of seq) { 
                 changeText(n); 
                 // Đã sửa: Tăng thời gian chờ lên 2500 (2.5 giây) để nhảy số chậm hơn
-                await smartWait(2400); 
+                await smartWait(2000); 
             }
             //await smartWait(2100); 
             //changeText("HAPPY\nNEW YEAR"); 
@@ -280,7 +280,7 @@
             setTimeout(() => fwFireworks.push(new Firework(fwWidth*0.2, fwHeight, fwWidth*0.2, fwHeight*0.3)), 0);
             setTimeout(() => fwFireworks.push(new Firework(fwWidth*0.8, fwHeight, fwWidth*0.8, fwHeight*0.3)), 1000);
             
-            await smartWait(2200); 
+            await smartWait(1500); 
             changeText("Frohes neues Jahr"); 
             canSwitchToIngot = true;
             console.log("Sẵn sàng chuyển Thỏi Vàng");
