@@ -265,7 +265,7 @@
         async function smartWait(ms) { let r = ms; while (r > 0) { await new Promise(res => setTimeout(res, 50)); if (!isPaused) r -= 50; } }
         
         async function runCountdownScript() {
-            const seq = ['6', '5', '4', '3', '2', '1', '0']; 
+            const seq = ['5', '4', '3', '2', '1', '0']; 
             for (let n of seq) { 
                 changeText(n); 
                 // Đã sửa: Tăng thời gian chờ lên 2500 (2.5 giây) để nhảy số chậm hơn
