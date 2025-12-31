@@ -5,12 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tet Magic - Final Gold 2026</title>
     <style>
-    body
-        <audio id="bgMusic" loop preload="auto">
-        <source src="nhac-tet.mp3" type="audio/mpeg">
-        </audio>
-  
-        { margin: 0; overflow: hidden; background-color: #000000; font-family: 'Segoe UI', sans-serif; }
+    body { margin: 0; overflow: hidden; background-color: #000000; font-family: 'Segoe UI', sans-serif; }
         canvas#three-canvas { display: block; position: absolute; top: 0; left: 0; z-index: 1; }
         canvas#firework-canvas { display: block; position: absolute; top: 0; left: 0; z-index: 2; pointer-events: none; }
         
@@ -48,6 +43,15 @@
 </head>
 <body>
 
+     //file nhạc
+    <body>
+    <audio id="bgMusic" loop preload="auto">
+    <source src="nhac-tet.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="container"></div>
+        
+    
     <div id="loading">WIRD GELADEN... BITTE DIE CAMERA ERÖFFNEN</div>
     <div id="cam-preview"><video class="input_video"></video></div>
 
