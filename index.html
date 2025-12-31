@@ -15,7 +15,7 @@
             text-shadow: 0 0 25px #ff8c00; pointer-events: none; z-index: 300;
             background: rgba(0,0,0,0.8); padding: 20px; border-radius: 10px;
         }
- 
+
         #cam-preview {
             position: absolute; bottom: 20px; left: 20px; 
             width: 160px; height: 120px;
@@ -42,9 +42,7 @@
     </script>
 </head>
 <body>
-    <audio id="bg-music" loop>
-        <source src="nhac-tet.mp3" type="audio/mpeg">
-    </audio>
+
     <div id="loading">ĐANG TẢI... VUI LÒNG CHO PHÉP CAMERA</div>
     <div id="cam-preview"><video class="input_video"></video></div>
 
@@ -67,7 +65,7 @@
         // ==========================================
         const IMAGE_CONFIG = {
             folder: './', 
-            files: ['11.jpg', '12.jpg', '13.jpg', '14.jpg','15.jpg', '16.jpg'] 
+            files: ['13.png', '14.png', '15.png', '16.png'] 
         };
 
         // --- GLOBAL VARIABLES ---
@@ -230,14 +228,14 @@
                 // Đã sửa: Tăng thời gian chờ lên 2500 (2.5 giây) để nhảy số chậm hơn
                 await smartWait(500); 
             }
-            await smartWait(200); 
-            changeText("HAPPY\nNEW YEAR"); 
+            //await smartWait(200); 
+            //changeText("HAPPY\nNEW YEAR"); 
             // Đã sửa: Tăng thời gian hiện chữ Happy New Year lên 3 giây
-            await smartWait(500); 
+            //await smartWait(3000); 
             
-            isFireworkActive = true; 
-            setTimeout(() => fwFireworks.push(new Firework(fwWidth*0.2, fwHeight, fwWidth*0.2, fwHeight*0.3)), 0);
-            setTimeout(() => fwFireworks.push(new Firework(fwWidth*0.8, fwHeight, fwWidth*0.8, fwHeight*0.3)), 1000);
+            //isFireworkActive = true; 
+            //setTimeout(() => fwFireworks.push(new Firework(fwWidth*0.2, fwHeight, fwWidth*0.2, fwHeight*0.3)), 0);
+            //setTimeout(() => fwFireworks.push(new Firework(fwWidth*0.8, fwHeight, fwWidth*0.8, fwHeight*0.3)), 1000);
             
             await smartWait(500); 
             changeText("Frohes neues Jahr"); 
@@ -416,26 +414,15 @@
         }
 
         function addPhotoToScene(texture) {
-            const group = new THREE.Group();
-            
-            // Chiều rộng 6.0, Chiều cao 4.2
-            const photoGeo = new THREE.PlaneGeometry(6.0, 4.2); 
-            const photoMat = INGOT_MATS.photo.clone(); 
-            photoMat.map = texture;
-            const photo = new THREE.Mesh(photoGeo, photoMat); 
-            photo.position.z = 0.16; // Nằm sát mặt viền vàng
-
-            const frameGeo = new THREE.BoxGeometry(6.0, 4.2, 0.3); 
-            const frame = new THREE.Mesh(frameGeo, INGOT_MATS.gold);
-            
-            const backGeo = new THREE.BoxGeometry(5.8, 4.0, 0.32); 
-            const back = new THREE.Mesh(backGeo, INGOT_MATS.velvetRed);
-            
-            group.add(frame, back, photo); 
-            photoMeshGroup.add(group);
-            
+            const group = new THREE.Group(); 
+            const photoGeo = new THREE.PlaneGeometry(4, 2.5); 
+            const photoMat = INGOT_MATS.photo.clone(); photoMat.map = texture;
+            const photo = new THREE.Mesh(photoGeo, photoMat); photo.position.z = 0.18;
+            const frameGeo = new THREE.BoxGeometry(4, 2.8, 0.3); const frame = new THREE.Mesh(frameGeo, INGOT_MATS.gold);
+            const backGeo = new THREE.BoxGeometry(3.8, 2.6, 0.32); const back = new THREE.Mesh(backGeo, INGOT_MATS.velvetRed);
+            group.add(frame, back, photo); photoMeshGroup.add(group);
             group.userData = { isPhoto: true, u: 0 };
-            particleSystem.push(new Particle(group, 'PHOTO', false));
+            particleSystem.push(new Particle(group, 'PHOTO', false)); 
             updatePhotoPositions();
         }
 
@@ -460,7 +447,7 @@
                 const theta = Math.random() * Math.PI * 2; const phi = Math.acos(2 * Math.random() - 1);
                 this.posScatter.set(rS*Math.sin(phi)*Math.cos(theta), rS*Math.sin(phi)*Math.sin(theta), rS*Math.cos(phi));
                 let u, v, radius;
-                if (this.type === 'PHOTO') { u = this.mesh.userData.u !== undefined ? this.mesh.userData.u : 0; v = Math.PI / 2; radius = 1.2; } 
+                if (this.type === 'PHOTO') { u = this.mesh.userData.u !== undefined ? this.mesh.userData.u : 0; v = Math.PI / 2; radius = 1.15; } 
                 else { u = (Math.random() - 0.5) * 2.2; v = Math.random() * Math.PI * 2; radius = 0.65 + Math.random() * 0.35; }
                 const x = u * (INGOT_CONFIG.size.scaleX / 2);
                 const bellyFactor = Math.sqrt(Math.max(0, 1 - (u*u)/1.5)); 
@@ -475,7 +462,7 @@
             update(dt, mode, targetMesh) {
                 let target = (mode === 'SCATTER') ? this.posScatter : this.posIngot;
                 if (mode === 'FOCUS' && this.mesh === targetMesh) { 
-                    const targetWorldPos = new THREE.Vector3(0, INGOT_CONFIG.camera.y, 30);
+                    const targetWorldPos = new THREE.Vector3(0, INGOT_CONFIG.camera.y, 45);
                     const desiredLocalPos = targetWorldPos.applyMatrix4(mainGroup.matrixWorld.clone().invert());
                     target = desiredLocalPos;
                 }
