@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tet Magic - Final Gold 2026</title>
-    <style>
-    body { margin: 0; overflow: hidden; background-color: #000000; font-family: 'Segoe UI', sans-serif; }
-        canvas#three-canvas { display: block; position: absolute; top: 0; left: 0; z-index: 1; }
-        canvas#firework-canvas { display: block; position: absolute; top: 0; left: 0; z-index: 2; pointer-events: none; }
-        
-        #loading {
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            color: #ffd700; font-size: 20px; letter-spacing: 5px; font-weight: bold;
-            text-shadow: 0 0 25px #ff8c00; pointer-events: none; z-index: 300;
-            background: rgba(0,0,0,0.8); padding: 20px; border-radius: 10px;
-        }
+    <style>   
+      
+        body { margin: 0; overflow: hidden; background-color: #000000; font-family: 'Segoe UI', sans-serif; }
+            canvas#three-canvas { display: block; position: absolute; top: 0; left: 0; z-index: 1; }
+            canvas#firework-canvas { display: block; position: absolute; top: 0; left: 0; z-index: 2; pointer-events: none; }
+            
+            #loading {
+                position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+                color: #ffd700; font-size: 20px; letter-spacing: 5px; font-weight: bold;
+                text-shadow: 0 0 25px #ff8c00; pointer-events: none; z-index: 300;
+                background: rgba(0,0,0,0.8); padding: 20px; border-radius: 10px;
+            }
 
         #cam-preview {
             position: absolute; bottom: 20px; left: 20px; 
@@ -26,6 +27,28 @@
             opacity: 0.9;
         }
         video { width: 100%; height: 100%; object-fit: cover; }
+
+        #overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle, #220000 0%, #000000 100%);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 10000; transition: opacity 1s ease;
+        }
+        #start-btn {
+            padding: 20px 40px; font-size: 24px; color: #ffd700;
+            border: 3px solid #ffd700; border-radius: 50px;
+            cursor: pointer; background: rgba(255, 215, 0, 0.1);
+            box-shadow: 0 0 20px #ff8c00, inset 0 0 15px #ff8c00;
+            text-align: center; font-weight: bold;
+            animation: pulse 2s infinite;
+            }
+        #start-btn:hover { background: #ffd700; color: #000; }
+            @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 20px #ff8c00; }
+            50% { transform: scale(1.05); box-shadow: 0 0 40px #ff4500; }
+            100% { transform: scale(1); box-shadow: 0 0 20px #ff8c00; }
+        }
+                
     </style>
     
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
@@ -42,7 +65,14 @@
     </script>
 </head>
 <body>
-
+    //bắt đầu
+    <div id="overlay">
+    <div id="start-btn">
+        <span style="font-size: 40px;">🧧</span><br>
+        BẮT ĐẦU TẾT 2026
+    </div>
+    </div>
+    
      //file nhạc
     <body>
     <audio id="bgMusic" loop preload="auto">
@@ -492,7 +522,8 @@
             renderer.setSize(window.innerWidth, window.innerHeight); composer.setSize(window.innerWidth, window.innerHeight);
             if(currentPhase===1) resizeFw();
         }
-                  // 1. Khởi tạo đối tượng âm thanh
+                  
+           /* // 1. Khởi tạo đối tượng âm thanh
             const audioElement = document.getElementById('bgMusic');
             const AudioContext = window.AudioContext || window.webkitAudioContext;
             let audioCtx;
@@ -526,7 +557,26 @@
             
             // 3. Lắng nghe tương tác để phát nhạc (Click hoặc Chạm)
             window.addEventListener('click', startAudio, { once: true });
-            window.addEventListener('touchstart', startAudio, { once: true });
+            window.addEventListener('touchstart', startAudio, { once: true });*/
+
+        const overlay = document.getElementById('overlay');
+        const startBtn = document.getElementById('start-btn');
+        const audioElement = document.getElementById('bgMusic');
+
+        startBtn.addEventListener('click', () => {
+            // 1. Phát nhạc
+            startAudio(); // Gọi hàm phát nhạc bạn đã có
+
+            // 2. Hiệu ứng ẩn màn hình chào
+            overlay.style.opacity = '0';
+            setTimeout(() => {
+                overlay.style.display = 'none';
+            }, 1000);
+
+            // 3. Có thể kích hoạt thêm hiệu ứng pháo hoa tại đây nếu muốn
+             console.log("Đã bắt đầu chương trình!");
+            });
+        
     </script>
 </body>
 </html>
