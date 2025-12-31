@@ -417,11 +417,11 @@
 
         function addPhotoToScene(texture) {
             const group = new THREE.Group(); 
-            const photoGeo = new THREE.PlaneGeometry(6.5, 8); 
+            const photoGeo = new THREE.PlaneGeometry(8, 6.5); 
             const photoMat = INGOT_MATS.photo.clone(); photoMat.map = texture;
-            const photo = new THREE.Mesh(photoGeo, photoMat); photo.position.z = 0.18;
-            const frameGeo = new THREE.BoxGeometry(6.5, 8, 0.4); const frame = new THREE.Mesh(frameGeo, INGOT_MATS.gold);
-            const backGeo = new THREE.BoxGeometry(6.5, 6.5, 0.32); const back = new THREE.Mesh(backGeo, INGOT_MATS.velvetRed);
+            const photo = new THREE.Mesh(photoGeo, photoMat); photo.position.z = 0.16;
+            const frameGeo = new THREE.BoxGeometry(8, 6.5, 0.4); const frame = new THREE.Mesh(frameGeo, INGOT_MATS.gold);
+            const backGeo = new THREE.BoxGeometry(7.8, 6.5, 0.32); const back = new THREE.Mesh(backGeo, INGOT_MATS.velvetRed);
             group.add(frame, back, photo); photoMeshGroup.add(group);
             group.userData = { isPhoto: true, u: 0 };
             particleSystem.push(new Particle(group, 'PHOTO', false)); 
