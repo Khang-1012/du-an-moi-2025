@@ -488,41 +488,41 @@
             renderer.setSize(window.innerWidth, window.innerHeight); composer.setSize(window.innerWidth, window.innerHeight);
             if(currentPhase===1) resizeFw();
         }
-      // 1. Khởi tạo đối tượng âm thanh
-const audioElement = document.getElementById('bgMusic');
-const AudioContext = window.AudioContext || window.webkitAudioContext;
-let audioCtx;
-let track;
-
-// 2. Hàm kích hoạt nhạc (vượt qua rào cản trình duyệt)
-function startAudio() {
-    // Khởi tạo AudioContext nếu chưa có
-    if (!audioCtx) {
-        audioCtx = new AudioContext();
-        track = audioCtx.createMediaElementSource(audioElement);
-        
-        // Điều chỉnh âm lượng (GainNode) giống file mẫu
-        const gainNode = audioCtx.createGain();
-        gainNode.gain.value = 0.6; // Âm lượng 60%
-
-        track.connect(gainNode).connect(audioCtx.destination);
-    }
-
-    // Nếu trình duyệt đang chặn (suspended), thì kích hoạt lại
-    if (audioCtx.state === 'suspended') {
-        audioCtx.resume();
-    }
-    
-    audioElement.play().then(() => {
-        console.log("Nhạc Tết đang phát...");
-    }).catch(err => {
-        console.log("Cần click vào màn hình để nghe nhạc");
-    });
-}
-
-// 3. Lắng nghe tương tác để phát nhạc (Click hoặc Chạm)
-window.addEventListener('click', startAudio, { once: true });
-window.addEventListener('touchstart', startAudio, { once: true });
+                  // 1. Khởi tạo đối tượng âm thanh
+            const audioElement = document.getElementById('bgMusic');
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            let audioCtx;
+            let track;
+            
+            // 2. Hàm kích hoạt nhạc (vượt qua rào cản trình duyệt)
+            function startAudio() {
+                // Khởi tạo AudioContext nếu chưa có
+                if (!audioCtx) {
+                    audioCtx = new AudioContext();
+                    track = audioCtx.createMediaElementSource(audioElement);
+                    
+                    // Điều chỉnh âm lượng (GainNode) giống file mẫu
+                    const gainNode = audioCtx.createGain();
+                    gainNode.gain.value = 0.6; // Âm lượng 60%
+            
+                    track.connect(gainNode).connect(audioCtx.destination);
+                }
+            
+                // Nếu trình duyệt đang chặn (suspended), thì kích hoạt lại
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+                
+                audioElement.play().then(() => {
+                    console.log("Nhạc Tết đang phát...");
+                }).catch(err => {
+                    console.log("Cần click vào màn hình để nghe nhạc");
+                });
+            }
+            
+            // 3. Lắng nghe tương tác để phát nhạc (Click hoặc Chạm)
+            window.addEventListener('click', startAudio, { once: true });
+            window.addEventListener('touchstart', startAudio, { once: true });
     </script>
 </body>
 </html>
